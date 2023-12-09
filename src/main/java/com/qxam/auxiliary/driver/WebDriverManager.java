@@ -39,6 +39,7 @@ public class WebDriverManager implements DriverManager {
     public void quit() {
         if (Objects.nonNull(threadWebDriver.get())) {
             log.info("Shutting down the getDriver");
+            threadWebDriver.get().quit();
         }
 
     }
