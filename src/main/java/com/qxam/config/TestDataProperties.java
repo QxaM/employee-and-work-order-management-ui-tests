@@ -6,4 +6,6 @@ import org.aeonbits.owner.Config;
 @Config.Sources({"system:env", "system:properties", "classpath:application.properties"})
 public interface TestDataProperties extends Config {
     String browserType();
+    long pageLoadTimeout();
+    long waitTimeout();
 }
