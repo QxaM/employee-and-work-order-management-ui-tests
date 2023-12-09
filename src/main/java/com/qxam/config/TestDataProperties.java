@@ -8,4 +8,7 @@ public interface TestDataProperties extends Config {
     String browserType();
     long pageLoadTimeout();
     long waitTimeout();
+    String baseUrl();
+    String brand();
+    String author();
 }
