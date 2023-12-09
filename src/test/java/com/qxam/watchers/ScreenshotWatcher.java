@@ -9,17 +9,15 @@ import org.junit.jupiter.api.extension.TestWatcher;
 @RequiredArgsConstructor
 public class ScreenshotWatcher implements TestWatcher {
 
-    private final DriverManager driverManager;
+  private final DriverManager driverManager;
 
+  @Override
+  public void testFailed(ExtensionContext context, Throwable cause) {
+    takeScreenshot(context.getDisplayName());
+  }
 
-
-    @Override
-    public void testFailed(ExtensionContext context, Throwable cause) {
-        takeScreenshot(context.getDisplayName());
-    }
-
-    @Attachment(value = "{name}", type = "image/png")
-    private byte[] takeScreenshot(String name) {
-        return driverManager.takeScreenshot();
-    }
+  @Attachment(value = "{name}", type = "image/png")
+  private byte[] takeScreenshot(String name) {
+    return driverManager.takeScreenshot();
+  }
 }

@@ -9,13 +9,13 @@ import org.openqa.selenium.WebDriver;
 @RequiredArgsConstructor
 public class OpenPageSteps {
 
-    private final TestDataProperties properties = DataProvider.get();
+  private final TestDataProperties properties = DataProvider.get();
 
-    private final WebDriver driver;
+  private final WebDriver driver;
 
-    @Step
-    public HomePageSteps openHomePage() {
-        driver.get(properties.baseUrl());
-        return new HomePageSteps(driver);
-    }
+  @Step
+  public HomePageSteps openHomePage() {
+    driver.get(properties.baseUrl());
+    return new HomePageSteps(driver);
+  }
 }
