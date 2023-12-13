@@ -1,5 +1,4 @@
-name: Trigger Chrome UI testing
-on:
+name: Trigger Edge UI testing
   workflow_dispatch:
   push:
     branches: ["main"]
