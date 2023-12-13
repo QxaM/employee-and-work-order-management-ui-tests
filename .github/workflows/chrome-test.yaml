@@ -1,7 +1,8 @@
 name: Trigger Chrome UI testing
 on:
   workflow_dispatch:
-
+  push:
+    branches: ["main"]
 jobs:
   build:
     runs-on: ubuntu-latest
