@@ -1,4 +1,4 @@
-name: Trigger Chrome UI testing
+name: Trigger Edge UI testing
 on:
   workflow_dispatch:
   push:
