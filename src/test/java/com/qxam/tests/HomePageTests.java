@@ -7,44 +7,41 @@ import org.junit.jupiter.api.Test;
 
 public class HomePageTests extends BaseTest {
 
-    private static HomePageSteps homePageSteps;
+  private static HomePageSteps homePageSteps;
 
-    @BeforeAll
-    public static void openHomePage() {
-        //Given User opens home page
-        homePageSteps = new OpenPageSteps(driverManager.get()).openHomePage();
-    }
+  @BeforeAll
+  public static void openHomePage() {
+    // Given User opens home page
+    homePageSteps = new OpenPageSteps(driverManager.get()).openHomePage();
+  }
 
-    @Test
-    void shouldIncludeBrandName() {
-        //Given User opens home page
+  @Test
+  void shouldIncludeBrandName() {
+    // Given User opens home page
 
-        //When
+    // When
 
-        //Then Current url is base url
-        homePageSteps.assertCurrentPageUrl(
-                properties.baseUrl(),
-                "Home page expected to be the current one");
-        //Then Page have branding
-        homePageSteps.assertBrandingExists();
-        //Then Page contains correct brand name
-        homePageSteps.assertBrandName();
-    }
+    // Then Current url is base url
+    homePageSteps.assertCurrentPageUrl(
+        properties.baseUrl(), "Home page expected to be the current one");
+    // Then Page have branding
+    homePageSteps.assertBrandingExists();
+    // Then Page contains correct brand name
+    homePageSteps.assertBrandName();
+  }
 
-    @Test
-    void shouldIncludeNameInFooter() {
-        //Given User opens home page
+  @Test
+  void shouldIncludeNameInFooter() {
+    // Given User opens home page
 
-        //When
+    // When
 
-        //Then
-        //Then Current url is base url
-        homePageSteps.assertCurrentPageUrl(
-                properties.baseUrl(),
-                "Home page expected to be the current one");
-        //Then Page have branding
-        homePageSteps.assertFooterExists();
-        //Then Page contains correct brand name
-        homePageSteps.assertFooterAuthor();
-    }
+    // Then Current url is base url
+    homePageSteps.assertCurrentPageUrl(
+        properties.baseUrl(), "Home page expected to be the current one");
+    // Then Page have branding
+    homePageSteps.assertFooterExists();
+    // Then Page contains correct brand name
+    homePageSteps.assertFooterAuthor();
+  }
 }

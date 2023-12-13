@@ -8,13 +8,13 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class FirefoxDriverFactory extends DriverFactory {
 
-    @Override
-    protected WebDriver createDriver() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("-browser");
-        options.addPreference("Network.dns.disablePrefetch", true);
+  @Override
+  protected WebDriver createDriver() {
+    FirefoxOptions options = new FirefoxOptions();
+    options.addArguments("-browser");
+    options.addPreference("Network.dns.disablePrefetch", true);
 
-        WebDriverManager.getInstance(WebDriverType.FIREFOX.name()).setup();
-        return new FirefoxDriver(options);
-    }
+    WebDriverManager.getInstance(WebDriverType.FIREFOX.name()).setup();
+    return new FirefoxDriver(options);
+  }
 }

@@ -8,14 +8,14 @@ import org.openqa.selenium.edge.EdgeOptions;
 
 public class EdgeDriverFactory extends DriverFactory {
 
-    @Override
-    protected WebDriver createDriver() {
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--dns-prefetch-disable");
-        options.addArguments("test-type");
+  @Override
+  protected WebDriver createDriver() {
+    EdgeOptions options = new EdgeOptions();
+    options.addArguments("--start-maximized");
+    options.addArguments("--dns-prefetch-disable");
+    options.addArguments("test-type");
 
-        WebDriverManager.getInstance(WebDriverType.EDGE.name()).setup();
-        return new EdgeDriver(options);
-    }
+    WebDriverManager.getInstance(WebDriverType.EDGE.name()).setup();
+    return new EdgeDriver(options);
+  }
 }
