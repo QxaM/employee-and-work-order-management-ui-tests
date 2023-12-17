@@ -21,7 +21,7 @@ jobs:
       - name: Set up Chrome WebDriver
         uses: nanasess/setup-chromedriver@v2.2.1
         with:
-          chromedriver-version: 'latest'
+          chromedriver-version: '120.0.6099.71'
 
       - name: Execute Gradle build
         run: ./gradlew test
