@@ -17,6 +17,9 @@ public class ChromeDriverFactory extends DriverFactory {
     options.addArguments("--disable-dev-shm-usage");
     options.addArguments("test-type");
 
+    System.setProperty("webdriver.chrome.driver", "./opt/hostedtoolcache/chromium/120.0.6099" +
+            ".71/x64");
+
     WebDriverManager.getInstance(WebDriverType.CHROME.name()).setup();
     return new ChromeDriver(options);
   }
