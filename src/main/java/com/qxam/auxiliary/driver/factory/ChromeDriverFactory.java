@@ -11,8 +11,10 @@ public class ChromeDriverFactory extends DriverFactory {
   @Override
   protected WebDriver createDriver() {
     ChromeOptions options = new ChromeOptions();
-    options.addArguments("--start-maximized");
     options.addArguments("--dns-prefetch-disable");
+    options.addArguments("--headless");
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
     options.addArguments("test-type");
 
     WebDriverManager.getInstance(WebDriverType.CHROME.name()).setup();
