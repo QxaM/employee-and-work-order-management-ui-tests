@@ -29,11 +29,36 @@ jobs:
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
 
       - name: Execute Gradle build
-        run: ./gradlew clean test -DCI_JOB_ID=${{ github.run_id }} --scan
+        run: ./gradlew clean test -DCI_JOB_ID=${{ github.run_id }} -DbrowserType=CHROME --scan
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         if: always()
+        continue-on-error: true
         with:
           name: build-reports
           path: build/reports/
+
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: report-pages
+          path: report-pages
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: report-pages
+          allure_history: allure-history
+          allure_results: build/allure-results
+
+      - name: Publish test report
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.ALLURE_REPORT_TOKEN }}
+          publish_branch: report-pages
+          publish_dir: allure-history
