@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Dec 19 20:54:35 GMT 2023","Tue Dec 19 20:54:35 GMT 2023","179","","com.qxam.tests.HomePageTests","","com.qxam.tests.HomePageTests","shouldIncludeBrandName","shouldIncludeBrandName()",""
-"passed","Tue Dec 19 20:54:36 GMT 2023","Tue Dec 19 20:54:36 GMT 2023","112","","com.qxam.tests.HomePageTests","","com.qxam.tests.HomePageTests","shouldIncludeNameInFooter","shouldIncludeNameInFooter()",""
