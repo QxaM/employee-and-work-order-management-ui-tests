@@ -1,13 +1,58 @@
 name: Trigger Safari UI testing
+run-name: Test on ${{ github.ref_name }} by @${{ github.actor }}
+
 on:
   workflow_dispatch:
   push:
     branches: ["main"]
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  safari-test:
+    runs-on: macos-13
+
     steps:
-      - uses: actions/checkout@master
-      - name: Pause for 25 seconds
-        run: |
-          sleep 25
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
+
+      - name: Execute Gradle build
+        run: ./gradlew clean test -DCI_JOB_ID=${{ github.run_id }} -PbrowserType=SAFARI --scan
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        continue-on-error: true
+        with:
+          name: build-reports
+          path: build/reports/
+
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: report-pages
+          path: report-pages
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: report-pages
+          allure_history: allure-history
+          allure_results: build/allure-results
+          subfolder: safari
+
+      - name: Publish test report
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: report-pages
+          publish_dir: allure-history
