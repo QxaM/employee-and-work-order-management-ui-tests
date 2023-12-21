@@ -23,7 +23,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.3.3
         with:
           ref: ${{ github.ref }}
-          check-name: chrome-test, firefox-test
+          check-name: firefox-test
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
           allowed-conclusions: success, skipped, cancelled, failure
