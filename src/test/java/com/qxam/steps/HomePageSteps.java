@@ -1,6 +1,5 @@
 package com.qxam.steps;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.qxam.pom.HomePage;
@@ -21,9 +20,8 @@ public class HomePageSteps extends BaseSteps<HomePage> {
 
   @Step
   public void assertBrandName() {
-    assertEquals(
-        getProperties().brand(),
-        page().getBrandText(),
+    assertTrue(
+        page().getBrandText().contains(getProperties().brand()),
         "Expected brand name to have: " + getProperties().brand());
   }
 

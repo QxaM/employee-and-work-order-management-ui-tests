@@ -1,9 +1,10 @@
 package com.qxam.auxiliary.driver;
 
+import java.net.MalformedURLException;
 import org.openqa.selenium.WebDriver;
 
 public interface DriverManager {
-  void instantiateDriver();
+  void instantiateDriver() throws MalformedURLException;
 
   void quit();
 

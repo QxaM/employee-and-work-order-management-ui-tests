@@ -2,9 +2,11 @@ package com.qxam.tests;
 
 import com.qxam.steps.HomePageSteps;
 import com.qxam.steps.OpenPageSteps;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+@Slf4j
 public class HomePageTests extends BaseTest {
 
   private static HomePageSteps homePageSteps;
